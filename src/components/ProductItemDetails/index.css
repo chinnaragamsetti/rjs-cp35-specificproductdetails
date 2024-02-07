@@ -1,0 +1,63 @@
+/* Write your CSS here */
+
+.productitemcontainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.selectedProductconainer {
+  display: flex;
+  flex-direction: column;
+}
+.topcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 45vh;
+  border: 1px solid red;
+}
+.mainimage {
+  width: 50%;
+  height: 80%;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.selectedtextcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 45%;
+  height: 90%;
+}
+.hrline {
+  width: 100%;
+}
+.cartcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.indcbutton {
+  width: 10px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+.cartno {
+  margin-right: 20px;
+}
+
+.addbutton {
+  background-color: #3b82f6;
+  padding: 5px;
+  border: 0px;
+  font-size: 10px;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+  width: 100px;
+}

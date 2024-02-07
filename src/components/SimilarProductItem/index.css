@@ -1,0 +1,46 @@
+/* Write your CSS here */
+.similarporductslist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.eachsimilarlist {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+.similarimage {
+  width: 100%;
+  height: 50px;
+}
+.title {
+  font-size: 20px;
+  color: black;
+}
+.brand {
+  font-size: 20px;
+  color: lightgray;
+}
+.rupeeandstarcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+.price {
+  font-size: 20px;
+  color: black;
+}
+.starcontainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #3b82f6;
+  border-radius: 5px;
+}
+.startext {
+  font-size: 10px;
+  color: #ffffff;
+}
+.starimage {
+  width: 10px;
+  height: 10px;
+}
