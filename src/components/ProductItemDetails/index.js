@@ -40,11 +40,8 @@ class ProductItemDetails extends Component {
       method: 'GET',
     }
 
-    const response = await fetch(
-      `http://localhost:3000/products/${id}`,
-      options,
-    )
-    const data = response.json()
+    const response = await fetch(`https://apis.ccbp.in/products/${id}`, options)
+    const data = await response.json()
     const similarProductsList = data.similar_products.map(each => ({
       id: each.id,
       imageUrl: each.image_url,
