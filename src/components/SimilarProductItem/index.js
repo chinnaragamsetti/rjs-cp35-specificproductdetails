@@ -3,11 +3,11 @@
 import './index.css'
 
 const SimilarProductItem = props => {
-  const {SimilarProductsItemsDatat} = props
+  const {SimilarProductsItemsData} = props
 
   return (
     <ul className="similarproductslist">
-      {SimilarProductsItemsDatat.map(each => (
+      {SimilarProductsItemsData.map(each => (
         <li className="eachsimilarlist">
           <img src={each.imageUrl} alt={each.title} className="similarimage" />
           <p className="title">{each.title}</p>
