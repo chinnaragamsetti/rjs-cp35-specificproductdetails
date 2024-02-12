@@ -3,6 +3,8 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import {BsPlusSquare} from 'react-icons/bs'
+
 import Header from '../Header'
 import SimilarProductItem from '../SimilarProductItem'
 
@@ -70,10 +72,22 @@ class ProductItemDetails extends Component {
         apiStatus: apiStatusConstants.success,
         similarProductsItemsData: similarProductsList,
       })
-    }
-
-    if (response.status === 404) {
+    } else {
       this.setState({apiStatus: apiStatusConstants.failure})
+    }
+  }
+
+  onIncre = () => {
+    this.setState(prevState => ({cartNo: prevState.cartNo + 1}))
+  }
+
+  onDecre = () => {
+    const {cartNo} = this.state
+
+    if (cartNo < 1) {
+      this.setState({cartNo: 0})
+    } else {
+      this.setState(prevState => ({cartNo: prevState.cartNo - 1}))
     }
   }
 
@@ -113,12 +127,22 @@ class ProductItemDetails extends Component {
             <p className="brand">{`Brand:${brand}`}</p>
             <hr className="hrline" />
             <div className="cartcontainer">
-              <button type="button" className="indcbutton">
-                -
+              <button
+                type="button"
+                className="indcbutton"
+                onClick={this.onDecre}
+                data-testid="plus"
+              >
+                <BsPlusSquare />
               </button>
               <p className="cartno">{cartNo}</p>
-              <button type="button" className="indcbutton">
-                +
+              <button
+                type="button"
+                className="indcbutton"
+                onClick={this.onIncre}
+                data-testid="plus"
+              >
+                <BsPlusSquare />
               </button>
             </div>
             <button type="button" className="addbutton">
@@ -146,10 +170,10 @@ class ProductItemDetails extends Component {
     <div className="failurecontainer">
       <img
         src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-error-view-img.png"
-        alt="error view"
+        alt="failure view"
         className="failureimage"
       />
-      <p className="failureimagetext">Product Not Found</p>
+      <h1 className="failureimagetext">Product Not Found</h1>
       <button type="button" className="continueshop">
         Continue Shopping
       </button>

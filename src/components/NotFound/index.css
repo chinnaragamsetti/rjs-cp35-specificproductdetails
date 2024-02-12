@@ -8,3 +8,14 @@
 .not-found-img {
   width: 400px;
 }
+.continuebutton {
+  background-color: lightskyblue;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 0px;
+}
+.notfoundpara {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
