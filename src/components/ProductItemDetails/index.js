@@ -3,7 +3,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
-import {BsPlusSquare} from 'react-icons/bs'
+import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 
 import Header from '../Header'
 import SimilarProductItem from '../SimilarProductItem'
@@ -44,6 +44,7 @@ class ProductItemDetails extends Component {
 
     const response = await fetch(`https://apis.ccbp.in/products/${id}`, options)
     const data = await response.json()
+
     const similarProductsList = data.similar_products.map(each => ({
       id: each.id,
       imageUrl: each.image_url,
@@ -61,6 +62,8 @@ class ProductItemDetails extends Component {
       id: data.id,
       imageUrl: data.image_url,
       title: data.title,
+      price: data.price,
+      description: data.description,
       brand: data.brand,
       totalReviews: data.total_reviews,
       rating: data.rating,
@@ -72,7 +75,7 @@ class ProductItemDetails extends Component {
         apiStatus: apiStatusConstants.success,
         similarProductsItemsData: similarProductsList,
       })
-    } else {
+    } else if (response.status === 404) {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
@@ -111,13 +114,13 @@ class ProductItemDetails extends Component {
           <div className="selectedtextcontainer">
             <h1 className="embhead">{title}</h1>
             <p className="price">{`Rs ${price}`}</p>
-            <div className="starreviescontainer">
-              <div className="startcont">
+            <div className="starreviewscontainer">
+              <div className="starcont">
                 <p className="star">{rating}</p>
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/star-img.png"
                   alt="start"
-                  className="startimage"
+                  className="starimage"
                 />
               </div>
               <p className="reviews">{`${totalReviews} Reviews`}</p>
@@ -131,18 +134,18 @@ class ProductItemDetails extends Component {
                 type="button"
                 className="indcbutton"
                 onClick={this.onDecre}
-                data-testid="plus"
+                data-testid="minus"
               >
-                <BsPlusSquare />
+                <BsDashSquare aria-label="close" />
               </button>
-              <p className="cartno">{cartNo}</p>
+              <label className="cartno">{cartNo}</label>
               <button
                 type="button"
                 className="indcbutton"
                 onClick={this.onIncre}
                 data-testid="plus"
               >
-                <BsPlusSquare />
+                <BsPlusSquare aria-label="close" />
               </button>
             </div>
             <button type="button" className="addbutton">

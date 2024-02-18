@@ -17,7 +17,7 @@ const SimilarProductItem = props => {
           <p className="title">{each.title}</p>
           <p className="brand">{`by ${each.brand}`}</p>
           <div className="rupeesstarcontainer">
-            <p className="price">{each.price}</p>
+            <p className="price">{`Rs ${each.price}`}</p>
             <div className="starcontainer">
               <p className="startext">{each.rating}</p>
               <img

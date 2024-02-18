@@ -18,7 +18,7 @@ const NotFound = props => {
           alt="not found"
           className="not-found-img"
         />
-        <p className="notfoundpara">Product Not Found</>
+        <p className="notfoundpara">Product Not Found</p>
         <button
           className="continuebutton"
           type="button"
