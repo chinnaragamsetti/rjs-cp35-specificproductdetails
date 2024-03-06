@@ -7,7 +7,7 @@ const NotFound = props => {
   const onClickContinueShopping = () => {
     const {history} = props
     //   Cookies.remove('jwt_token')
-    history.replace('/')
+    history.replace('/products')
   }
   return (
     <div>

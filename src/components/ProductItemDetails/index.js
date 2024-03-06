@@ -22,7 +22,7 @@ class ProductItemDetails extends Component {
     productItemData: {},
     apiStatus: apiStatusConstants.initial,
     similarProductsItemsData: [],
-    cartNo: 0,
+    cartNo: 1,
   }
 
   componentDidMount() {
@@ -69,13 +69,14 @@ class ProductItemDetails extends Component {
       rating: data.rating,
       availability: data.availability,
     }
-    if (response.ok === true) {
+
+    if (!response.ok) {
       this.setState({
         productItemData: selectedProduct,
         apiStatus: apiStatusConstants.success,
         similarProductsItemsData: similarProductsList,
       })
-    } else if (response.status === 404) {
+    } else {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
@@ -136,16 +137,16 @@ class ProductItemDetails extends Component {
                 onClick={this.onDecre}
                 data-testid="minus"
               >
-                <BsDashSquare aria-label="close" />
+                <BsDashSquare aria-label="close" className="controllericon" />
               </button>
-              <label className="cartno">{cartNo}</label>
+              <p className="cartno">{cartNo}</p>
               <button
                 type="button"
                 className="indcbutton"
                 onClick={this.onIncre}
                 data-testid="plus"
               >
-                <BsPlusSquare aria-label="close" />
+                <BsPlusSquare aria-label="close" className="controllericon" />
               </button>
             </div>
             <button type="button" className="addbutton">
@@ -164,10 +165,15 @@ class ProductItemDetails extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="products-loader-container">
+    <div className="products-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
+
+  onContinueShopping = () => {
+    const {history} = this.props
+    history.replace('/products')
+  }
 
   renderFailureView = () => (
     <div className="failurecontainer">
@@ -177,7 +183,11 @@ class ProductItemDetails extends Component {
         className="failureimage"
       />
       <h1 className="failureimagetext">Product Not Found</h1>
-      <button type="button" className="continueshop">
+      <button
+        type="button"
+        className="continueshop"
+        onClick={this.onContinueShopping}
+      >
         Continue Shopping
       </button>
     </div>
